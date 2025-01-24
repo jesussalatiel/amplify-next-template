@@ -5,10 +5,10 @@ import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
 import "./../app/app.css";
 import { Amplify } from "aws-amplify";
-import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
+import { nextConfig } from "../amplify/variables";
 
-Amplify.configure(outputs);
+Amplify.configure(JSON.parse(nextConfig));
 
 const client = generateClient<Schema>();
 
@@ -32,7 +32,7 @@ export default function App() {
   }
 
   function deleteTodo(id: string) {
-    client.models.Todo.delete({id});
+    client.models.Todo.delete({ id });
   }
 
   return (
@@ -41,9 +41,9 @@ export default function App() {
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}
-          onClick={()=>deleteTodo(todo.id)}
-          >{todo.content}</li>
+          <li key={todo.id} onClick={() => deleteTodo(todo.id)}>
+            {todo.content}
+          </li>
         ))}
       </ul>
       <div>

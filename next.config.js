@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  cacheHandler: require.resolve('./cache-handler.js'), // Ruta al manejador de caché
+  cacheHandler: require.resolve("./cache-handler.js"), // Ruta al manejador de caché
   cacheMaxMemorySize: 50, // Tamaño máximo de la caché en MB
   env: {
     USER_POOL_CLIENT_ID: process.env.USER_POOL_CLIENT_ID,
